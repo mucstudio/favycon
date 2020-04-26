@@ -1,1 +1,77 @@
 @import '../../styles/variables.scss';
+
+.dropdown {
+	max-width: 238px;
+	padding: 12px 12px 8px;
+
+	&.open {
+		border-radius: 4px;
+		box-shadow: 0 2px 4px 0 rgba($black, 0.12);
+	}
+}
+
+.menu {
+	position: relative;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	padding-bottom: 21px;
+	cursor: pointer;
+
+	&.open::after {
+		position: absolute;
+		bottom: 9px;
+		left: -12px;
+		width: calc(100% + 24px);
+		height: 1px;
+		content: '';
+		background-color: $light-grey;
+	}
+}
+
+.logo {
+	width: 48px;
+	height: 48px;
+	margin-right: 12px;
+}
+
+.dropdownInfo {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
+.title {
+	font-size: $font-size-title;
+	font-weight: 700;
+	line-height: $line-height-medium-body;
+}
+
+.subtitle {
+	font-size: $font-size-footer;
+	font-weight: 600;
+	line-height: $line-height-medium-body;
+}
+
+.label {
+	text-align: center;
+}
+
+.labelLink {
+	font-size: $font-size-footer;
+	font-weight: 600;
+	line-height: $line-height-medium-body;
+	color: $grey;
+	text-decoration: underline;
+	letter-spacing: 0.2;
+}
+
+:global(.dark-mode) {
+	.title {
+		color: $white;
+	}
+
+	.subtitle {
+		color: $white;
+	}
+}
