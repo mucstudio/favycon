@@ -5,6 +5,7 @@
 }
 
 .label {
+	position: relative;
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -28,4 +29,50 @@
 	-webkit-appearance: none;
 	-moz-appearance: none;
 	-webkit-tap-highlight-color: transparent;
+}
+
+.sun,
+.moon {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	transition: all 0.3s ease;
+
+	path {
+		transition: all 0.3s ease;
+	}
+}
+
+:global(.light-mode) {
+	.sun {
+		visibility: hidden;
+		transform: translateX(-1px) scale(0);
+	}
+	.moon {
+		transform: translate(0, 0) rotate(0) scale(1);
+	}
+	.sun,
+	.moon {
+		path {
+			fill: #ccc;
+		}
+	}
+}
+
+:global(.dark-mode) {
+	.sun {
+		transform: translateX(0) scale(1);
+	}
+	.moon {
+		visibility: hidden;
+		transform: translate(0, -2px) rotate(115deg) scale(0.4);
+	}
+	.sun,
+	.moon {
+		path {
+			fill: #5a5b66;
+		}
+	}
 }

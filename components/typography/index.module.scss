@@ -1,5 +1,9 @@
 @import '../../styles/variables.scss';
 
+.root {
+	font-family: Manrope, Arial, Helvetica Neue, Helvetica, sans-serif;
+}
+
 .h1 {
 	font-size: $font-size-h1;
 	line-height: $line-height-h1;
@@ -45,6 +49,16 @@
 	line-height: $line-height-superscript;
 }
 
+.title {
+	font-size: $font-size-title;
+	line-height: $line-height-title;
+}
+
+.largeTitle {
+	font-size: $font-size-large-title;
+	line-height: $line-height-large-title;
+}
+
 .regular {
 	font-weight: 400;
 }
@@ -64,10 +78,10 @@
 .black {
 	color: $black;
 	transition: color 0.2s ease;
+}
 
-	&.dark {
-		color: $white;
-	}
+:global(.dark-mode) .black {
+	color: $white;
 }
 
 .gray {
@@ -77,8 +91,21 @@
 .white {
 	color: $white;
 	transition: color 0.2s ease;
+}
 
-	&.dark {
-		color: $black;
-	}
+:global(.dark-mode) .white {
+	color: $black;
+}
+
+.green {
+	color: $green;
+}
+
+.muted {
+	color: $grey;
+	transition: color 0.2s ease;
+}
+
+:global(.dark-mode) .muted {
+	color: $grey;
 }
