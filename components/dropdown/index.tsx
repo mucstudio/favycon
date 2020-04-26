@@ -3,45 +3,39 @@ import classnames from 'classnames'
 import useDarkMode from 'use-dark-mode'
 import { SvgArrowDown } from 'components/svgs/svg-arrow-down'
 import { SvgFavycon } from 'components/svgs/svg-favycon'
-import { SvgAppycon } from 'components/svgs/svg-appycon'
 
 import styles from './index.module.scss'
 
 type DropdownProps = {
 	label: string
-	showApps: boolean
+	labelLink: string
 }
 
-const Dropdown = ({ label, showApps }: DropdownProps) => {
+const Dropdown = ({ label, labelLink }: DropdownProps) => {
 	const [isOpen, toggleIsOpen] = useState(false)
 	const { value: isDark } = useDarkMode(false)
 
 	return (
 		<div className={classnames(styles.dropdown, { [styles.dark]: isDark })}>
-			<button className={classnames(styles.label, { [styles.dark]: isDark })} onClick={() => toggleIsOpen(!isOpen)}>
-				{label}
-				<SvgArrowDown />
-			</button>
+			<div className={classnames(styles.logo, { [styles.dark]: isDark })} onClick={() => toggleIsOpen(!isOpen)}>
+				<SvgFavycon />
+				{!isOpen && <SvgArrowDown />}
+				{isOpen && (
+					<div className={classnames(styles.dropdownInfo, { [styles.dark]: isDark })}>
+						<span className={classnames(styles.title, { [styles.dark]: isDark })}>Favycon</span>
+						<span className={classnames(styles.subtitle, { [styles.dark]: isDark })}>Favicon generator tool</span>
+					</div>
+				)}
+			</div>
 			{isOpen && (
-				<div className={classnames(styles.menu, { [styles.dark]: isDark })}>
-					{showApps && (
-						<div>
-							<a className={classnames(styles.featured, { [styles.dark]: isDark })} href="/">
-								<SvgFavycon />
-								<div>
-									<span>Favycon</span>
-									<span>Favicon generator tool</span>
-								</div>
-							</a>
-							<a className={classnames(styles.featured, { [styles.dark]: isDark })} href="/">
-								<SvgAppycon />
-								<div>
-									<span>Appycon</span>
-									<span>Coming Soon</span>
-								</div>
-							</a>
-						</div>
-					)}
+				<div className={classnames(styles.label, { [styles.dark]: isDark })}>
+					<a
+						className={classnames(styles.labelLink, { [styles.dark]: isDark })}
+						target="_blanK"
+						rel="noopener noreferrer"
+						href={labelLink}>
+						{label}
+					</a>
 				</div>
 			)}
 		</div>

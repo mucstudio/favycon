@@ -7,10 +7,10 @@ export default {
 	decorators: [withKnobs],
 }
 export const drodpwonDesktop = () => {
-	const label = 'More tools'
-	const showApps = true
+	const label = 'Have Feedback? Found a bug?'
+	const labelLink = 'mailto:feedback@favycon.app'
 
-	return <Dropdown label={label} showApps={showApps} />
+	return <Dropdown label={label} labelLink={labelLink} />
 }
 
 drodpwonDesktop.story = {
